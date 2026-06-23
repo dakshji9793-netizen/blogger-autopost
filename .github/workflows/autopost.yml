@@ -2,9 +2,9 @@ name: Auto Post to Blogger
 
 on:
   schedule:
-    # Har 2 ghante me automatic chalega (Aap chahein toh time badal sakte hain)
-    - cron: '0 */2 * * *'
-  workflow_dispatch: # Isse aap jab chahein manually bhi chala sakte hain
+    # यह हर 5 मिनट में ऑटोमैटिक चेक करेगा (GitHub में इससे फ़ास्ट नहीं हो सकता)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # इससे आप खुद भी बटन दबाकर तुरंत चला सकते हैं
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-python: '3.10'
+        python-version: '3.10'
 
     - name: Install Dependencies
       run: |
@@ -26,4 +26,3 @@ jobs:
 
     - name: Run Automation Script
       run: python main.py
-      
